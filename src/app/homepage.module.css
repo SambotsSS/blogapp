@@ -2,3 +2,28 @@
     display: flex;
     gap: 50px;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .container {
+        flex: 3; /* Adjust flex property for laptops */
+    }
+
+    .title {
+        margin: 40px 0px; /* Adjust margin for better spacing on laptops */
+        font-size: 1.8rem; /* Adjust font size for laptops */
+    }
+}
+
+/* Styles specific to phone screens (up to 767px) */
+@media screen and (max-width: 767px) {
+    .container {
+        flex: 1; /* Simplify layout for smaller screens */
+        padding: 10px; /* Add padding for better spacing on phones */
+    }
+
+    .title {
+        margin: 20px 0px; /* Reduce margin for compact screens */
+        font-size: 1.2rem; /* Smaller font size for phones */
+        text-align: center; /* Center the title for better appearance */
+    }
+}
