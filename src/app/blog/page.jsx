@@ -4,7 +4,8 @@ import Menu from "@/components/Menu/Menu";
 
 async function fetchPosts(page = 1) {
     try {
-        const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"; // Use environment variable or fallback to localhost
+        const res = await fetch(`${baseUrl}/api/posts?page=${page}`, {
             cache: "no-store", // Ensures fresh data
         });
         if (!res.ok) {
@@ -18,7 +19,7 @@ async function fetchPosts(page = 1) {
 }
 
 const BlogPage = async ({ searchParams }) => {
-    const page = searchParams?.page || 1; // Extract page number from URL
+    const page = parseInt(searchParams?.page || 1); // Extract page number from URL
     const data = await fetchPosts(page);
 
     return (
